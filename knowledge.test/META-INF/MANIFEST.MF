@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: knowledge.test
+Bundle-Version: 1.0.0.qualifier
+Export-Package: knowledgeAnalysis
+Require-Bundle: knowledge.model;bundle-version="1.0.0",
+ knowledge.xtext;bundle-version="1.0.0",
+ knowledge.xtext.tests;bundle-version="1.0.0",
+ knowledge.xtext.ui;bundle-version="1.0.0"

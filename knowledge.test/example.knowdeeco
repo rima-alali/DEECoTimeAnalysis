@@ -1,0 +1,57 @@
+DEECoModel {
+	elements {
+		Process process_1 { period 1 },
+		Process process_2 {	period 2 } ,
+		Process process_3 {	period 3 },
+		Process process_4 { period 4 },
+		Process process_5 {	period 5 } ,
+		Process process_6 {	period 6 } ,
+		
+		Ensemble ensemble_1 { period 10	},
+		Ensemble ensemble_2 { period 20	},
+		Ensemble ensemble_3 { period 30	},
+		Ensemble ensemble_4 { period 40	},
+		Ensemble ensemble_5 { period 50	},
+		Ensemble ensemble_6 { period 60	},
+		Ensemble ensemble_7 { period 70	},
+		Ensemble ensemble_8 { period 80	},
+	
+        //define a default writer for the knowledge
+		Process SomeOtherProcessOrEnesmble { period 0  }
+	}
+	
+	knowledges {
+		Leaf knowledge_1 { type int reader( ensemble_1 ) writer process_1},
+	    Leaf knowledge_2 { type int writer ensemble_1},
+	    Leaf knowledge_3 { type int reader( ensemble_2 , ensemble_4) writer SomeOtherProcessOrEnesmble},
+	    Leaf knowledge_4 { type int reader( ensemble_2 ) writer process_2},
+	    Leaf knowledge_5 { type int reader( ensemble_3 ) writer ensemble_2},
+	    Leaf knowledge_6 { type int writer ensemble_3},
+	    KnowledgeElement knowledge_7 { 
+	    						  reader ( ensemble_4 )	
+	    						  writer SomeOtherProcessOrEnesmble
+			                      child {   KnowledgeElement child_1_knowledge_7{ 
+			                                                                 writer SomeOtherProcessOrEnesmble
+										                                     child { Leaf child_child_knowledge_7 { type int writer process_3} }
+					                        },
+					                        Leaf child_2_knowledge_7 { type int writer process_4}
+ 				                   }
+		},
+	    Leaf knowledge_8 { type int writer ensemble_4},
+	    Leaf knowledge_9 { type int reader( ensemble_5 , ensemble_6 , ensemble_7 ) writer process_5},
+	    Leaf knowledge_10 { type int writer ensemble_5},
+	    Leaf knowledge_11 { type int writer ensemble_6},
+	    Leaf knowledge_12 { type int writer ensemble_7},
+	   
+	    KnowledgeElement knowledge_13 {
+			
+			writer process_6
+			child { Leaf child_1_knowledge_13 { type int reader( ensemble_8 ) writer process_6} }
+		},
+		Leaf knowledge_14 { type int writer ensemble_8}
+	}
+}
+
+/*
+ * Q:is the writer for plan is the same for the tree nodes of plan knowledge?
+ */

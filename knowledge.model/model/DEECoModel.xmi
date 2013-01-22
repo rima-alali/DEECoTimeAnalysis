@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ASCII"?>
+<knowledge:DEECoModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:knowledge="http://knowledge/1.0"
+    xsi:schemaLocation="http://knowledge/1.0 Knowledge.ecore">
+  <elements
+      xsi:type="knowledge:Process"
+      name="checkPlanFeasibility"
+      period="2"
+      IN="//@knowledges.0/@child.5 //@knowledges.0/@child.1 //@knowledges.0/@child.2 //@knowledges.0/@child.3"
+      OUT="//@knowledges.0/@child.4"/>
+  <elements
+      xsi:type="knowledge:Process"
+      name="computePlan"
+      period="7"
+      IN="//@knowledges.0/@child.5 //@knowledges.0/@child.4"
+      OUT="//@knowledges.0/@child.5"/>
+  <elements
+      xsi:type="knowledge:Process"
+      name="moveAlongTheRoute"
+      period="3"
+      IN="//@knowledges.0/@child.5 //@knowledges.0/@child.3 //@knowledges.0/@child.4 //@knowledges.0/@child.1"
+      OUT="//@knowledges.0/@child.1 //@knowledges.0/@child.3"/>
+  <elements
+      xsi:type="knowledge:Ensemble"
+      name="PLCSCloseToPOI"
+      period="5"
+      IN="//@knowledges.0/@child.0 //@knowledges.0/@child.3/@child.0/@child.0"
+      OUT="//@knowledges.0/@child.3/@child.0/@child.0"/>
+  <elements
+      xsi:type="knowledge:Ensemble"
+      name="VehiclePLCS"
+      period="9"
+      IN="//@knowledges.0/@child.4 //@knowledges.0/@child.1"
+      OUT="//@knowledges.0/@child.2 //@knowledges.0/@child.1"/>
+  <elements
+      xsi:type="knowledge:Ensemble"
+      name="PLCSVehicle"
+      period="8"
+      IN="//@knowledges.0/@child.4 //@knowledges.0/@child.3"
+      OUT="//@knowledges.0/@child.4 //@knowledges.0/@child.3"/>
+  <knowledges
+      xsi:type="knowledge:KnowledgeElement"
+      name="Vehicle">
+    <child xsi:type="knowledge:Leaf"
+        name="id"
+        reader="//@elements.3"
+        type="int"/>
+    <child xsi:type="knowledge:KnowledgeElement"
+        name="energyLevel"
+        reader="//@elements.0 //@elements.2 //@elements.4"
+        writer="//@elements.2">
+      <child
+          xsi:type="knowledge:Leaf"
+          name="level"
+          type="int"/>
+    </child>
+    <child xsi:type="knowledge:KnowledgeElement"
+        name="trafficLevel"
+        reader="//@elements.0"
+        writer="//@elements.4">
+      <child
+          xsi:type="knowledge:Leaf"
+          name="level"
+          type="int"/>
+    </child>
+    <child xsi:type="knowledge:KnowledgeElement"
+        name="currentRoute"
+        reader="//@elements.0 //@elements.2 //@elements.5"
+        writer="//@elements.2">
+      <child
+          xsi:type="knowledge:KnowledgeElement"
+          name="distances">
+        <child
+            xsi:type="knowledge:Leaf"
+            name="calendarEventId"
+            reader="//@elements.3 //@elements.4"
+            type="int"/>
+        <child
+            xsi:type="knowledge:Leaf"
+            name="speedLimit"
+            type="int"/>
+        <child
+            xsi:type="knowledge:Leaf"
+            name="remainingDistance"
+            type="int"/>
+      </child>
+    </child>
+    <child xsi:type="knowledge:Leaf"
+        name="isPlanFeasible"
+        reader="//@elements.1 //@elements.2 //@elements.5 //@elements.4"
+        writer="//@elements.0"
+        type="Boolean"/>
+    <child xsi:type="knowledge:KnowledgeElement"
+        name="plan"
+        reader="//@elements.0 //@elements.1 //@elements.2"
+        writer="//@elements.1">
+      <child
+          xsi:type="knowledge:KnowledgeElement"
+          name="route">
+        <child
+            xsi:type="knowledge:KnowledgeElement"
+            name="distances">
+          <child
+              xsi:type="knowledge:Leaf"
+              name="calendarEventId"
+              type="int"/>
+          <child
+              xsi:type="knowledge:Leaf"
+              name="speedLimit"
+              type="int"/>
+          <child
+              xsi:type="knowledge:Leaf"
+              name="remainingDistance"
+              type="int"/>
+        </child>
+      </child>
+    </child>
+  </knowledges>
+</knowledge:DEECoModel>

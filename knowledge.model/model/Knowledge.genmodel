@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Knowledge/src" modelPluginID="Knowledge" modelName="Knowledge"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>Knowledge.ecore</foreignModel>
+  <genPackages prefix="Knowledge" disposableProviderFactory="true" ecorePackage="Knowledge.ecore#/">
+    <genClasses ecoreClass="Knowledge.ecore#//AbstractKnowledge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Knowledge.ecore#//AbstractKnowledge/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Knowledge.ecore#//AbstractKnowledge/reader"/>
+    </genClasses>
+    <genClasses ecoreClass="Knowledge.ecore#//KnowledgeNode"/>
+    <genClasses ecoreClass="Knowledge.ecore#//KnowledgeElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Knowledge.ecore#//KnowledgeElement/child"/>
+    </genClasses>
+    <genClasses ecoreClass="Knowledge.ecore#//Leaf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Knowledge.ecore#//Leaf/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Knowledge.ecore#//Leaf/writer"/>
+    </genClasses>
+    <genClasses ecoreClass="Knowledge.ecore#//Ensemble"/>
+    <genClasses ecoreClass="Knowledge.ecore#//Process"/>
+    <genClasses image="false" ecoreClass="Knowledge.ecore#//AbstractElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Knowledge.ecore#//AbstractElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Knowledge.ecore#//AbstractElement/period"/>
+    </genClasses>
+    <genClasses ecoreClass="Knowledge.ecore#//DEECoModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Knowledge.ecore#//DEECoModel/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Knowledge.ecore#//DEECoModel/knowledges"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
